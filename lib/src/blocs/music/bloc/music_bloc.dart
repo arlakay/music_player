@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:test_telkomsel_bcg/src/models/request/music/music_request.dart';
 import 'package:test_telkomsel_bcg/src/models/response/music/music_response.dart';
 import 'package:test_telkomsel_bcg/src/utils/network/network_manager.dart';
 
@@ -26,7 +27,7 @@ class MusicBloc extends Bloc<MusicEvent, MusicState> {
     yield MusicLoading();
     try {
       final MusicResponse musicResponse = await NetworkManager().getMusic(
-        query: event.term,
+        query: event.request.term,
       );
       if (musicResponse != null) {
         yield MusicSuccess(
@@ -46,7 +47,7 @@ class MusicBloc extends Bloc<MusicEvent, MusicState> {
     yield MusicLoading();
     try {
       final MusicResponse musicResponse = await NetworkManager().searchMusic(
-        query: event.term,
+        query: event.request.term,
       );
       if (musicResponse != null) {
         yield MusicSuccess(

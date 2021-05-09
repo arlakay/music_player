@@ -8,19 +8,19 @@ abstract class MusicEvent extends Equatable {
 }
 
 class GetMusic extends MusicEvent {
-  GetMusic({this.term}) : assert(term != null);
+  GetMusic({this.request}) : assert(request != null);
 
-  final String term;
+  final MusicRequest request;
 
   @override
-  List<Object> get props => [term];
+  List<Object> get props => [request];
 }
 
 class SearchMusic extends MusicEvent {
-  SearchMusic({this.term}) : assert(term != null);
+  SearchMusic({this.request}) : assert(request != null);
 
-  final String term;
+  final MusicRequest request;
 
   @override
-  List<Object> get props => [term];
+  List<Object> get props => [request];
 }
