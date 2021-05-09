@@ -21,7 +21,7 @@ class NetworkManager {
     final ApiRequest apiRequest = ApiRequest(service: getMusicService);
     final dynamic response = await apiRequest.request();
 
-    return MusicResponse.fromJson(response.data);
+    return musicResponseFromJson(response.data);
   }
 
   Future<MusicResponse> searchMusic({
@@ -33,6 +33,6 @@ class NetworkManager {
     final ApiRequest apiRequest = ApiRequest(service: searchMusicService);
     final dynamic response = await apiRequest.request();
 
-    return MusicResponse.fromJson(response.data);
+    return musicResponseFromJson(response.data);
   }
 }

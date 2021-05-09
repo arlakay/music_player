@@ -29,7 +29,7 @@ class MusicBloc extends Bloc<MusicEvent, MusicState> {
       final MusicResponse musicResponse = await NetworkManager().getMusic(
         query: event.request.term,
       );
-      if (musicResponse != null) {
+      if (musicResponse.resultCount > 0 && musicResponse.results != null) {
         yield MusicSuccess(
           musicResponse: musicResponse,
         );
@@ -49,7 +49,7 @@ class MusicBloc extends Bloc<MusicEvent, MusicState> {
       final MusicResponse musicResponse = await NetworkManager().searchMusic(
         query: event.request.term,
       );
-      if (musicResponse != null) {
+      if (musicResponse.resultCount > 0 && musicResponse.results != null) {
         yield MusicSuccess(
           musicResponse: musicResponse,
         );

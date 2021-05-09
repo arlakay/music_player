@@ -38,15 +38,11 @@ class ApiRequest {
     final _service = service;
 
     if (_service is SearchMusicService) {
-      return Endpoints.searchMusic(
-        query: _service.searchQuery,
-      );
+      return Endpoints.searchMusic();
     }
 
     if (_service is GetMusicService) {
-      return Endpoints.searchMusic(
-        query: _service.searchQuery,
-      );
+      return Endpoints.searchMusic();
     }
 
     return '';

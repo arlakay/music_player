@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:test_telkomsel_bcg/src/utils/navigation_service/navigation_service.dart';
 import 'package:test_telkomsel_bcg/src/utils/router/router_service.dart';
 import 'package:test_telkomsel_bcg/src/utils/service_locator/setup_locator.dart';
@@ -29,6 +30,10 @@ class _LaunchPageState extends State<LaunchPage> {
         child: Center(
           child: Text(
             'Music\nPlayer',
+            style: GoogleFonts.roboto(
+              fontSize: 40.0,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),

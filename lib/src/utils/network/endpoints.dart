@@ -10,7 +10,7 @@ class Endpoints {
   ///
   ///iTunes API
   ///
-  static String searchMusic({String query}) => '/search?term=$query';
+  static String searchMusic() => '/search';
 
 
   

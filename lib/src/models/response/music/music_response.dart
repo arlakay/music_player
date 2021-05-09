@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-MusicResponse welcomeFromJson(String str) => MusicResponse.fromJson(json.decode(str));
+MusicResponse musicResponseFromJson(String str) => MusicResponse.fromJson(json.decode(str));
 
-String welcomeToJson(MusicResponse data) => json.encode(data.toJson());
+String musicResponseToJson(MusicResponse data) => json.encode(data.toJson());
 
 class MusicResponse {
     MusicResponse({
