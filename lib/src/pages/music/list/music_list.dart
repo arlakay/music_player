@@ -18,6 +18,7 @@ class _MusicListState extends State<MusicList> {
   String selectedSong;
 
   bool isSongSelected = false;
+  bool isSongPlayed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +34,7 @@ class _MusicListState extends State<MusicList> {
           );
         } else if (state is MusicLoading) {
           isSongSelected = false;
+          isSongPlayed = false;
           advancedPlayer.stop();
 
           return Container(
@@ -78,6 +80,7 @@ class _MusicListState extends State<MusicList> {
                   selectedIndex = j;
                   selectedSong = resultSongResponse[j].previewUrl;
                   isSongSelected = true;
+                  isSongPlayed = false;
                   advancedPlayer.setUrl(resultSongResponse[j].previewUrl);
                   advancedPlayer.seek(Duration());
                   advancedPlayer.pause();
@@ -136,15 +139,22 @@ class _MusicListState extends State<MusicList> {
                           ],
                         ),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: <Widget>[
-                          Image.network('src'),
-                          const SizedBox(
-                            height: 8.0,
-                          ),
-                        ],
-                      ),
+                      isSongPlayed && j == selectedIndex
+                          ? Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: <Widget>[
+                                  Image.asset(
+                                    'assets/images/soundwave.png',
+                                    width: 72,
+                                  ),
+                                  const SizedBox(
+                                    height: 8.0,
+                                  ),
+                                ],
+                              ),
+                            )
+                          : Container(),
                     ],
                   ),
                 ),
@@ -173,6 +183,7 @@ class _MusicListState extends State<MusicList> {
                       key: Key('play_button'),
                       onPressed: () {
                         advancedPlayer.resume();
+                        isSongPlayed = true;
                         setState(() {});
                       },
                       iconSize: 64.0,
@@ -183,6 +194,7 @@ class _MusicListState extends State<MusicList> {
                       key: Key('pause_button'),
                       onPressed: () {
                         advancedPlayer.pause();
+                        isSongPlayed = false;
                         setState(() {});
                       },
                       iconSize: 64.0,
