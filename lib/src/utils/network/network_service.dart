@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 abstract class NetworkService extends Equatable {
   @override
-  List<Object> get props => null;
+  List<Object> get props => [];
 }
 
 class SearchMusicService extends NetworkService {
@@ -10,7 +10,7 @@ class SearchMusicService extends NetworkService {
     this.searchQuery,
   });
 
-  final String searchQuery;
+  final String? searchQuery;
 }
 
 class GetMusicService extends NetworkService {
@@ -18,5 +18,5 @@ class GetMusicService extends NetworkService {
     this.searchQuery,
   });
 
-  final String searchQuery;
+  final String? searchQuery;
 }

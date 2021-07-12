@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:test_telkomsel_bcg/src/blocs/music/bloc/music_bloc.dart';
+import 'package:test_telkomsel_bcg/src/blocs/music/music_bloc.dart';
 import 'package:test_telkomsel_bcg/src/models/request/music/music_request.dart';
 
 class SearchBox extends StatefulWidget {

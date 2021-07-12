@@ -8,7 +8,7 @@ abstract class MusicEvent extends Equatable {
 }
 
 class GetMusic extends MusicEvent {
-  GetMusic({this.request}) : assert(request != null);
+  GetMusic({required  this.request}) : assert(request != null);
 
   final MusicRequest request;
 
@@ -17,7 +17,7 @@ class GetMusic extends MusicEvent {
 }
 
 class SearchMusic extends MusicEvent {
-  SearchMusic({this.request}) : assert(request != null);
+  SearchMusic({required  this.request}) : assert(request != null);
 
   final MusicRequest request;
 

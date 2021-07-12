@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class CustomBlocObserver extends BlocObserver {
   @override
-  void onEvent(Bloc bloc, Object event) {
+  void onEvent(Bloc bloc, Object? event) {
     super.onEvent(bloc, event);
     debugPrint('onEvent $event');
   }
@@ -15,8 +15,14 @@ class CustomBlocObserver extends BlocObserver {
   }
 
   @override
-  void onError(Cubit cubit, Object error, StackTrace stackTrace) {
-    super.onError(cubit, error, stackTrace);
-    debugPrint('onError $error');
+  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
+    debugPrint(error as String?);
+    super.onError(bloc, error, stackTrace);
+  }
+
+  @override
+  void onChange(BlocBase bloc, Change change) {
+    super.onChange(bloc, change);
+    print(change);
   }
 }

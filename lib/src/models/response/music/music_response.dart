@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final welcome = welcomeFromJson(jsonString);
-
 import 'dart:convert';
 
 MusicResponse musicResponseFromJson(String str) => MusicResponse.fromJson(json.decode(str));
@@ -14,17 +10,17 @@ class MusicResponse {
         this.results,
     });
 
-    int resultCount;
-    List<Result> results;
+    int? resultCount;
+    List<Result>? results;
 
-    factory MusicResponse.fromJson(Map<String, dynamic> json) => MusicResponse(
+    factory MusicResponse.fromJson(Map<dynamic, dynamic> json) => MusicResponse(
         resultCount: json["resultCount"],
         results: List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
     );
 
-    Map<String, dynamic> toJson() => {
+    Map<dynamic, dynamic>? toJson() => {
         "resultCount": resultCount,
-        "results": List<dynamic>.from(results.map((x) => x.toJson())),
+        "results": List<dynamic>.from(results!.map((x) => x.toJson())),
     };
 }
 
@@ -65,41 +61,41 @@ class Result {
         this.collectionArtistName,
     });
 
-    WrapperType wrapperType;
-    Kind kind;
-    int artistId;
-    int trackId;
-    String artistName;
-    String trackName;
-    String trackCensoredName;
-    String artistViewUrl;
-    String trackViewUrl;
-    String previewUrl;
-    String artworkUrl30;
-    String artworkUrl60;
-    String artworkUrl100;
-    double collectionPrice;
-    double trackPrice;
-    DateTime releaseDate;
-    Explicitness collectionExplicitness;
-    Explicitness trackExplicitness;
-    int trackTimeMillis;
-    Country country;
-    Currency currency;
-    PrimaryGenreName primaryGenreName;
-    int collectionId;
-    String collectionName;
-    String collectionCensoredName;
-    String collectionViewUrl;
-    int discCount;
-    int discNumber;
-    int trackCount;
-    int trackNumber;
-    bool isStreamable;
-    int collectionArtistId;
-    String collectionArtistName;
+    WrapperType? wrapperType;
+    Kind? kind;
+    int? artistId;
+    int? trackId;
+    String? artistName;
+    String? trackName;
+    String? trackCensoredName;
+    String? artistViewUrl;
+    String? trackViewUrl;
+    String? previewUrl;
+    String? artworkUrl30;
+    String? artworkUrl60;
+    String? artworkUrl100;
+    double? collectionPrice;
+    double? trackPrice;
+    DateTime? releaseDate;
+    Explicitness? collectionExplicitness;
+    Explicitness? trackExplicitness;
+    int? trackTimeMillis;
+    Country? country;
+    Currency? currency;
+    PrimaryGenreName? primaryGenreName;
+    int? collectionId;
+    String? collectionName;
+    String? collectionCensoredName;
+    String? collectionViewUrl;
+    int? discCount;
+    int? discNumber;
+    int? trackCount;
+    int? trackNumber;
+    bool? isStreamable;
+    int? collectionArtistId;
+    String? collectionArtistName;
 
-    factory Result.fromJson(Map<String, dynamic> json) => Result(
+    factory Result.fromJson(Map<dynamic, dynamic> json) => Result(
         wrapperType: wrapperTypeValues.map[json["wrapperType"]],
         kind: kindValues.map[json["kind"]],
         artistId: json["artistId"],
@@ -135,9 +131,9 @@ class Result {
         collectionArtistName: json["collectionArtistName"] == null ? null : json["collectionArtistName"],
     );
 
-    Map<String, dynamic> toJson() => {
-        "wrapperType": wrapperTypeValues.reverse[wrapperType],
-        "kind": kindValues.reverse[kind],
+    Map<dynamic, dynamic> toJson() => {
+        "wrapperType": wrapperTypeValues.reverse![wrapperType!],
+        "kind": kindValues.reverse![kind!],
         "artistId": artistId,
         "trackId": trackId,
         "artistName": artistName,
@@ -151,13 +147,13 @@ class Result {
         "artworkUrl100": artworkUrl100,
         "collectionPrice": collectionPrice == null ? null : collectionPrice,
         "trackPrice": trackPrice == null ? null : trackPrice,
-        "releaseDate": releaseDate.toIso8601String(),
-        "collectionExplicitness": explicitnessValues.reverse[collectionExplicitness],
-        "trackExplicitness": explicitnessValues.reverse[trackExplicitness],
+        "releaseDate": releaseDate!.toIso8601String(),
+        "collectionExplicitness": explicitnessValues.reverse![collectionExplicitness!],
+        "trackExplicitness": explicitnessValues.reverse![trackExplicitness!],
         "trackTimeMillis": trackTimeMillis,
-        "country": countryValues.reverse[country],
-        "currency": currencyValues.reverse[currency],
-        "primaryGenreName": primaryGenreNameValues.reverse[primaryGenreName],
+        "country": countryValues.reverse![country!],
+        "currency": currencyValues.reverse![currency!],
+        "primaryGenreName": primaryGenreNameValues.reverse![primaryGenreName!],
         "collectionId": collectionId == null ? null : collectionId,
         "collectionName": collectionName == null ? null : collectionName,
         "collectionCensoredName": collectionCensoredName == null ? null : collectionCensoredName,
@@ -215,11 +211,11 @@ final wrapperTypeValues = EnumValues({
 
 class EnumValues<T> {
     Map<String, T> map;
-    Map<T, String> reverseMap;
+    Map<T, String>? reverseMap;
 
     EnumValues(this.map);
 
-    Map<T, String> get reverse {
+    Map<T, String>? get reverse {
         if (reverseMap == null) {
             reverseMap = map.map((k, v) => new MapEntry(v, k));
         }
