@@ -3,5 +3,5 @@ class MusicRequest {
     this.term,
   });
   
-  String term;
+  String? term;
 }

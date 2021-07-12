@@ -3,7 +3,7 @@ enum Flavor {
 }
 
 class Config {
-  static Flavor appFlavor;
+  static Flavor? appFlavor;
 
   static String get helloMessage {
     switch (appFlavor) {

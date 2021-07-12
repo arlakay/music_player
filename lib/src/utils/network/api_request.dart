@@ -17,7 +17,7 @@ class ErrorCode {
 class ApiRequest {
   ApiRequest({this.service});
 
-  final NetworkService service;
+  final NetworkService? service;
 
   Dio get dio => _dio();
   Dio _dio() {
@@ -94,14 +94,8 @@ class ApiRequest {
       print(isConnected);
       if (isConnected) {
         Map<String, dynamic> finalHeaders;
-        // if (service is! CheckUserService || service is! RegisterUserService) {
-        //   final String token = await SecureStorage().readKey(key: Constants.accessToken);
-        //   finalHeaders = <String, dynamic>{
-        //     'Authorization': 'Bearer $token',
-        //   };
-        // } else {
+        
         finalHeaders = <String, dynamic>{};
-        // }
 
         finalHeaders.addAll(headers);
 

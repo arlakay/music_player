@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:test_telkomsel_bcg/src/blocs/music/bloc/music_bloc.dart';
+import 'package:test_telkomsel_bcg/src/blocs/music/music_bloc.dart';
 import 'package:test_telkomsel_bcg/src/models/request/music/music_request.dart';
 
 void main() {

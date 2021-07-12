@@ -16,7 +16,7 @@ class MusicSuccess extends MusicState {
     this.musicResponse,
   });
 
-  final MusicResponse musicResponse;
+  final MusicResponse? musicResponse;
 }
 
 class MusicError extends MusicState {
@@ -25,6 +25,6 @@ class MusicError extends MusicState {
     this.exception,
   });
 
-  final MusicResponse musicResponse;
+  final MusicResponse? musicResponse;
   final dynamic exception;
 }

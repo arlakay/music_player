@@ -13,7 +13,7 @@ class NetworkManager {
   ///
 
   Future<MusicResponse> getMusic({
-    String query,
+    String? query,
   }) async {
     final GetMusicService getMusicService = GetMusicService(
       searchQuery: query,
@@ -25,7 +25,7 @@ class NetworkManager {
   }
 
   Future<MusicResponse> searchMusic({
-    String query,
+    String? query,
   }) async {
     final SearchMusicService searchMusicService = SearchMusicService(
       searchQuery: query,

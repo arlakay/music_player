@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:test_telkomsel_bcg/src/blocs/music/bloc/music_bloc.dart';
+import 'package:test_telkomsel_bcg/src/blocs/music/music_bloc.dart';
 import 'package:test_telkomsel_bcg/src/models/request/music/music_request.dart';
 import 'package:test_telkomsel_bcg/src/models/response/music/music_response.dart';
 import 'package:audioplayers/audioplayers.dart';
@@ -13,9 +13,9 @@ class MusicList extends StatefulWidget {
 class _MusicListState extends State<MusicList> {
   AudioPlayer advancedPlayer = AudioPlayer();
 
-  List<Result> resultSongResponse;
-  int selectedIndex;
-  String selectedSong;
+  List<Result>? resultSongResponse;
+  int? selectedIndex;
+  String? selectedSong;
 
   bool isSongSelected = false;
   bool isSongPlayed = false;
@@ -43,7 +43,7 @@ class _MusicListState extends State<MusicList> {
             ),
           );
         } else if (state is MusicSuccess) {
-          resultSongResponse = state.musicResponse.results;
+          resultSongResponse = state.musicResponse!.results;
           return _widgetList();
         } else if (state is MusicError) {
           return Container(
@@ -72,16 +72,16 @@ class _MusicListState extends State<MusicList> {
             ),
             physics: const ClampingScrollPhysics(),
             shrinkWrap: true,
-            itemCount: resultSongResponse.length,
+            itemCount: resultSongResponse!.length,
             cacheExtent: 50,
             itemBuilder: (BuildContext context, int j) {
               return GestureDetector(
                 onTap: () {
                   selectedIndex = j;
-                  selectedSong = resultSongResponse[j].previewUrl;
+                  selectedSong = resultSongResponse![j].previewUrl!;
                   isSongSelected = true;
                   isSongPlayed = false;
-                  advancedPlayer.setUrl(resultSongResponse[j].previewUrl);
+                  advancedPlayer.setUrl(resultSongResponse![j].previewUrl!);
                   advancedPlayer.seek(Duration());
                   advancedPlayer.pause();
                   setState(() {});
@@ -96,7 +96,7 @@ class _MusicListState extends State<MusicList> {
                         width: 100,
                         height: 100,
                         child: Image.network(
-                          resultSongResponse[j].artworkUrl100,
+                          resultSongResponse![j].artworkUrl100!,
                         ),
                       ),
                       SizedBox(
@@ -107,7 +107,7 @@ class _MusicListState extends State<MusicList> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              resultSongResponse[j].trackName,
+                              resultSongResponse![j].trackName ?? '',
                               style: TextStyle(
                                 color: const Color.fromARGB(255, 77, 77, 77),
                                 fontSize: 14,
@@ -118,7 +118,7 @@ class _MusicListState extends State<MusicList> {
                               height: 8.0,
                             ),
                             Text(
-                              resultSongResponse[j].artistName,
+                              resultSongResponse![j].artistName ?? '',
                               style: TextStyle(
                                 color: const Color.fromARGB(255, 77, 77, 77),
                                 fontSize: 14,
@@ -129,7 +129,7 @@ class _MusicListState extends State<MusicList> {
                               height: 8.0,
                             ),
                             Text(
-                              resultSongResponse[j].collectionName,
+                              resultSongResponse![j].collectionName ?? '',
                               style: TextStyle(
                                 color: const Color.fromARGB(255, 77, 77, 77),
                                 fontSize: 14,
